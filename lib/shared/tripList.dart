@@ -22,11 +22,8 @@ class _TripListState extends State<TripList> {
     List<Trip> _trips = [
       Trip(title: 'Beach Paradise', price: '350', nights: '3', img: 'beach.png'),
       Trip(title: 'City Break', price: '400', nights: '5', img: 'city.png'),
-      Trip(title: 'Beach Safari', price: '500', nights: '5', img: 'beach.png'),
       Trip(title: 'Ski Adventure', price: '750', nights: '2', img: 'ski.png'),
       Trip(title: 'Space Blast', price: '600', nights: '4', img: 'space.png'),
-      Trip(title: 'Snorkeling', price: '800', nights: '4', img: 'ski.png'),
-      Trip(title: 'Adventure', price: '1200', nights: '5', img: 'space.png'),
     ];
 
     _trips.forEach((Trip trip) {
@@ -50,9 +47,12 @@ class _TripListState extends State<TripList> {
       ),
       leading: ClipRRect(
         borderRadius: BorderRadius.circular(10.0),
-        child: Image.asset(
-          'images/${trip.img}',
-          height: 50.0,
+        child: Hero(
+          tag: 'location-img-${trip.img}',
+          child: Image.asset(
+            'images/${trip.img}',
+            height: 50.0,
+          ),
         ),
       ),
       trailing: Text('\$${trip.price}'),
